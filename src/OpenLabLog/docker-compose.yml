@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  openlablog.api:
+    image: ${DOCKER_REGISTRY-}openlablogapi
+    build:
+      context: .
+      dockerfile: OpenLabLog.Api/Dockerfile
