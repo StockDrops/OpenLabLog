@@ -4,6 +4,7 @@ using Microsoft.Identity.Web.Resource;
 using OpenLabLog.Api.Contracts;
 using OpenLabLog.Core.Contracts.Models;
 using OpenLabLog.Core.Contracts.Services;
+using OpenLabLog.Core.Models.Configuration;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,7 +28,9 @@ namespace OpenLabLog.Api.Controllers.Base
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+#if !DEBUG
         [RequiredScope(ApiScopes.Read)]
+#endif
         public virtual Task<List<T>> GetAsync()
         {
             return _repositoryService.GetAllAsync();
@@ -38,7 +41,9 @@ namespace OpenLabLog.Api.Controllers.Base
         /// <param name="id">long describing the id of the item.</param>
         /// <returns></returns>
         [HttpGet("{id}")]
+#if !DEBUG
         [RequiredScope(ApiScopes.Read)]
+#endif
         public virtual Task<T?> GetAsync(long id)
         {
             return _repositoryService.GetAsync(id);
@@ -49,9 +54,11 @@ namespace OpenLabLog.Api.Controllers.Base
         /// <param name="entity"></param>
         /// <returns></returns>
         /// 
-        [Authorize(Policy = PredifinedRoles.AdminsPolicyName)]
         [HttpPost]
+#if !DEBUG
+        [Authorize(Policy = PredifinedRoles.AdminsPolicyName)]   
         [RequiredScope(ApiScopes.Write)]
+#endif
         public virtual async Task<ActionResult<T>> SaveAsync([FromBody] T entity)
         {
             try
@@ -74,9 +81,12 @@ namespace OpenLabLog.Api.Controllers.Base
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Policy = PredifinedRoles.AdminsPolicyName)]
+        
         [HttpDelete("{id}")]
+#if !DEBUG
+        [Authorize(Policy = PredifinedRoles.AdminsPolicyName)]
         [RequiredScope(ApiScopes.Delete)]
+#endif
         public virtual async Task<IActionResult> DeleteAsync(long id)
         {
             try
@@ -97,9 +107,12 @@ namespace OpenLabLog.Api.Controllers.Base
         /// <param name="id"></param>
         /// <param name="entity"></param>
         /// <returns></returns>
-        [Authorize(Policy = PredifinedRoles.AdminsPolicyName)]
+        
         [HttpPut("{id}")]
+#if !DEBUG
+        [Authorize(Policy = PredifinedRoles.AdminsPolicyName)]
         [RequiredScope(ApiScopes.Update)]
+#endif
         public virtual async Task<IActionResult> UpdateAsync(long id, [FromBody] T entity)
         {
             if (entity == null)

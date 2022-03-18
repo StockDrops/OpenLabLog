@@ -23,7 +23,7 @@ namespace OpenLabLog.Core.Models
         /// <summary>
         /// The entries associated
         /// </summary>
-        public ISet<LogEntry> LogEntry { get; set; } = new HashSet<LogEntry>();
+        public virtual ISet<LogEntry> LogEntry { get; set; } = new HashSet<LogEntry>();
         
         /// <summary>
         /// The id of the log book
@@ -32,7 +32,7 @@ namespace OpenLabLog.Core.Models
         /// <summary>
         /// Navigational property for a log book
         /// </summary>
-        public LogBook? LogBook { get; set; }
+        public virtual LogBook? LogBook { get; set; }
 
     }
 }

@@ -22,7 +22,7 @@ namespace OpenLabLog.Core.Models
         /// <summary>
         /// The logbook contains many logs.
         /// </summary>
-        public ISet<Log> Logs { get; set; } = new HashSet<Log>();
+        public virtual ISet<Log> Logs { get; set; } = new HashSet<Log>();
 
         /// <summary>
         /// The id of the associated experiment
@@ -31,6 +31,6 @@ namespace OpenLabLog.Core.Models
         /// <summary>
         /// The navigational property for the experiment.
         /// </summary>
-        public Experiment? Experiment { get; set; }
+        public virtual Experiment? Experiment { get; set; }
     }
 }

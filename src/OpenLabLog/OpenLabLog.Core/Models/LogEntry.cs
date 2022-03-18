@@ -28,14 +28,18 @@ namespace OpenLabLog.Core.Models
         /// </summary>
         public DateTime Date { get; set; }
         /// <summary>
-        /// The author of the entry
+        /// The id of the author
         /// </summary>
         /// 
-        [Required]
-        public Author? Author { get; set; }
+        [Required(ErrorMessage = "Enter an author Id. Enter 0 if specifying a new author with the field 'author'")]
+        public long AuthorId { get; set; }
+        /// <summary>
+        /// The author of the entry
+        /// </summary>
+        public virtual Author? Author { get; set; }
         /// <summary>
         /// The set of values associated with this log entry.
         /// </summary>
-        public ISet<ValuedParameter> Values { get; set; } = new HashSet<ValuedParameter>();
+        public virtual ISet<ValuedParameter> Values { get; set; } = new HashSet<ValuedParameter>();
     }
 }

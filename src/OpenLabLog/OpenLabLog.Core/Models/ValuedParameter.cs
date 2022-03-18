@@ -11,6 +11,7 @@ namespace OpenLabLog.Core.Models
 {
     /// <summary>
     /// A value linked to a parameter set previously
+    /// TODO: Add binary data support/image support
     /// </summary>
     public class ValuedParameter : IEntity
     {
@@ -37,6 +38,6 @@ namespace OpenLabLog.Core.Models
         /// <summary>
         /// The parameter navigational property.
         /// </summary>
-        public Parameter? Parameter { get; set; }
+        public virtual Parameter? Parameter { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenLabLog.Core.Contracts.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,8 +11,10 @@ namespace OpenLabLog.Core.Models
     /// <summary>
     /// Defines an author in the notebook. Ideally this information would come from an Azure AD directory?
     /// </summary>
-    public class Author
+    public class Author : IEntity
     {
+        ///<inheritdoc/>
+        public long Id { get; set; }
         /// <summary>
         /// First name
         /// </summary>
